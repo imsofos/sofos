@@ -1,0 +1,19 @@
+{
+  "name": "sofos",
+  "version": "0.0.0",
+  "description": "maybe another http framework written in js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imsofos/sofos.git"
+  },
+  "author": "imsofos@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imsofos/sofos/issues"
+  },
+  "homepage": "https://github.com/imsofos/sofos#readme"
+}
