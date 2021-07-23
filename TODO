@@ -1,6 +1,7 @@
-[ ] Serving Files
+[x] Serving Files
 [ ] MiddleWare Support
 [ ] idk but maybe mvc model ?
 [ ] support method and multi layer urls in routing
-[ ] parsing request body for controllers 
+[x] parsing request body for controllers 
 [ ] template engine
+[ ] check content type in request body things

@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/imsofos/sofos/issues"
   },
-  "homepage": "https://github.com/imsofos/sofos#readme"
+  "homepage": "https://github.com/imsofos/sofos#readme",
+  "dependencies": {
+    "path-to-regexp": "^6.2.0"
+  }
 }
