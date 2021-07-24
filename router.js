@@ -1,6 +1,7 @@
 const { indexController, notFoundController, serveFile } = require('./controllers')
 const { pathToRegexp } = require("path-to-regexp");
 const querystring = require('querystring');
+const { render } = require('./templateEngline')
 
 
 function dispather(routeTableInput) {
@@ -25,7 +26,7 @@ function dispather(routeTableInput) {
             if (!exec) continue
             const { keys, controller } = methodRoutes.get(route);
             for (let j = 0; j < keys.length; j++) request[keys[j].name] = exec[j + 1]
-            request.params = {...querystring.parse(myUrl[1])};
+            request.params = { ...querystring.parse(myUrl[1]) };
             request.body = '';
             request.on('data', (data) => {
                 request.body += data;
@@ -33,7 +34,8 @@ function dispather(routeTableInput) {
             request.on('end', () => {
                 try {
                     request.body = JSON.parse(request.body)
-                } catch (err) {}
+                } catch (err) { }
+                response.render = render(response);
                 return controller(request, response)
             });
         }

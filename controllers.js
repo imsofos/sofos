@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 
 
 const indexController = async (request, response) => {
-    await serveFile({filePath: 'index.html'}, response)
+    response.render('index.html', {title: request.params.title})
 }
 
 const notFoundController = async (request, response) => {
