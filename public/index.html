@@ -7,7 +7,14 @@
 </head>
 
 <body>
-    <h1>{{title}}</h1>
+    {% for item in items %}
+        {% if item.name %}
+            <h1>{{ item.name }}</h1>
+        {% endif %}
+        {% if !item.name %}
+            <h1> {{ item }} </h1>
+        {% endif %}
+    {% endfor %}
 </body>
 
 </html>

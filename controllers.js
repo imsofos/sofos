@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 
 
 const indexController = async (request, response) => {
-    response.render('index.html', {title: request.params.title})
+    response.render('index.html', {items: 12})
 }
 
 const notFoundController = async (request, response) => {
