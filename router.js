@@ -1,7 +1,13 @@
-const { indexController, notFoundController, serveFile } = require('./controllers')
+const { serveFile, notFound } = require('./baseController');
+const postRoutes = require('./blog/post/postRoutes');
+const commentRoutes = require('./blog/comment/commentRoutes');
+const tagRoutes = require('./blog/tag/tagRoutes');
+const userRoutes = require('./blog/user/userRoutes');
+
 const { pathToRegexp } = require("path-to-regexp");
 const querystring = require('querystring');
-const { render } = require('./templateEngline')
+const { render } = require('./templateEngine')
+
 
 
 function dispather(routeTableInput) {
@@ -18,7 +24,7 @@ function dispather(routeTableInput) {
     return async (request, response) => {
         const myUrl = request.url.split('?')
         const methodRoutes = routeTable.get(request.method);
-        if (!methodRoutes) return notFoundController(request, response)
+        if (!methodRoutes) return notFound(request, response)
         const routes = methodRoutes.keys()
         for (let i = 0; i < methodRoutes.size; i++) {
             const route = routes.next().value;
@@ -36,16 +42,23 @@ function dispather(routeTableInput) {
                     request.body = JSON.parse(request.body)
                 } catch (err) { }
                 response.render = render(response);
-                return controller(request, response)
+                return controller(request, response).catch(error => {
+                    console.error(error);
+                    response.writeHead(500)
+                    response.end('Internal Error')
+                })
             });
         }
     }
 }
 
 const routeTable = {
-    'GET /': indexController,
-    'POST /:id': indexController,
-    'GET /public/:filePath(.*)': serveFile
+    ...postRoutes,
+    ...commentRoutes,
+    ...tagRoutes,
+    ...userRoutes,
+    'GET /public/:filePath(.*)': serveFile,
+    'GET /uploads/:filePath(.*)': serveFile,
 }
 
 module.exports = {

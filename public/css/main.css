@@ -1,3 +1,76 @@
-body{
-    background-color: red;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a:visited {
+    color: inherit
+}
+
+body {
+    background: #dc2743;
+    background: -moz-linear-gradient(30deg, #dc2743 0%, #cc2366 50%, #bc1888 100%);
+    background: -webkit-linear-gradient(30deg, #dc2743 0%, #cc2366 50%, #bc1888 100%);
+    background: linear-gradient(30deg, #dc2743 0%, #cc2366 50%, #bc1888 100%);
+    min-height: 100vh;
+}
+
+.container {
+    width: 80%;
+    margin: 100px auto;
+    min-height: 100vhw;
+}
+
+.postContainer {
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 50px 0px;
+    padding: 10px;
+    box-shadow: 0 0 12px #fff;
+}
+
+.postContainer > .postHeader {
+    border-bottom: 1px solid black;
+}
+
+.postContainer > .postHeader > span {
+    color: gray;
+    font-size: small;
+}
+
+.postContainer > .postBody {
+    padding: 10px 0;
+    width: 100%;
+}
+
+.postContainer > .postBody > .imageContainer > img {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 4px;
+}
+
+.postContainer > .postFooter {
+    direction: rtl;
+    width: 100%;
+}
+
+.postContainer > .postFooter > a > button {
+    direction: ltr;
+    background: #dc2743;
+    background: -moz-linear-gradient(30deg,  #7f00ff 0%, #e100ff 100%);
+    background: -webkit-linear-gradient(30deg,  #7f00ff 0%, #e100ff 100%);
+    background: linear-gradient(30deg,  #7f00ff 0%, #e100ff 100%);
+    outline: none;
+    border: none;
+    padding: 0.75em 1.75em;
+    border-radius: 4px;
+    color:#fff;
+    margin-top: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.postContainer > .postFooter > a > button:hover {
+    box-shadow: 0 0 10px #a7a7a7;
 }

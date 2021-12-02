@@ -2,19 +2,43 @@
 <html lang="en">
 
 <head>
-    <title>Document</title>
-    <link rel="stylesheet" href="public/css/main.css">
+    <title>Sofos Blog</title>
+    <link rel="stylesheet" href="/public/css/main.css">
 </head>
 
 <body>
-    {% for item in items %}
-        {% if item.name %}
-            <h1>{{ item.name }}</h1>
+    <div class="container">
+        {% if !posts.length %}
+            Not Found
         {% endif %}
-        {% if !item.name %}
-            <h1> {{ item }} </h1>
-        {% endif %}
-    {% endfor %}
+        {% for post in posts %}
+            <div class="postContainer">
+                <div class="postHeader">
+                    <h1>{{ post.title }}</h1>
+                    <span>Date: {{ post.date }}, </span>
+                    <span>
+                        Author: 
+                        <a href='/author/{{ post.author.id }}'>
+                            {{ post.author.name }}
+                        </a>
+                    </span>
+                </div>
+                <div class="postBody">
+                    <div class="imageContainer">
+                        <img src="/uploads/{{ post.image }}" alt="image-description">
+                    </div>
+                    <div class="postText">
+                        <p>{{ post.text }}</p>
+                    </div>
+                </div>
+                <div class="postFooter">
+                    <a href="/posts/{{ post.id }}">
+                        <button>Read More ...</button>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 
 </html>

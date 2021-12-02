@@ -1,9 +1,0 @@
-Template Engine: 
-    [ ] elif & else support in template engine
-    [ ] precomplied templates should exists
-    [ ] should we cache the precomplied templates?
-    [ ] return some nice error on error (instead of shuting down :D)
-    [ ] extends, block support
-
-MiddleWare
-    [] Support Them :)
