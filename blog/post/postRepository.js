@@ -1,21 +1,25 @@
 const BaseRepository = require('../../baseRepository');
-
+const uuid = require('uuid').v4;
 class PostRepository {
 
-    static async create() {
-        return await BaseRepository.create()
+    static async create(key, value) {
+        const id = uuid();
+        value.id = id;
+        await BaseRepository.create(`${key}:${id}`, value)
+        return value
     }
 
-    static async find(options = {}) {
-        return await BaseRepository.find('posts.json', options);
+    static async find(key) {
+        return await BaseRepository.find(key);
     }
 
-    static async update() {
-        return await BaseRepository.update()
+    static async update(key, value) {
+        await BaseRepository.update(key, value)
+        return value
     }
 
-    static async remove() {
-        return await BaseRepository.remove()
+    static async remove(key) {
+        return await BaseRepository.remove(key)
     }
 }
 

@@ -8,36 +8,38 @@
 
 <body>
     <div class="container">
-        {% if !posts.length %}
+        {% if !posts?.length %}
             Not Found
-        {% endif %}
-        {% for post in posts %}
-            <div class="postContainer">
-                <div class="postHeader">
-                    <h1>{{ post.title }}</h1>
-                    <span>Date: {{ post.date }}, </span>
-                    <span>
-                        Author: 
-                        <a href='/author/{{ post.author.id }}'>
-                            {{ post.author.name }}
+        {% endif%}
+        {% if posts?.length %}
+            {% for post in posts %}
+                <div class="postContainer">
+                    <div class="postHeader">
+                        <h1>{{ post.title }}</h1>
+                        <span>Date: {{ post.date }}, </span>
+                        <span>
+                            Author: 
+                            <a href='/author/{{ post.author.id }}'>
+                                {{ post.author.name }}
+                            </a>
+                        </span>
+                    </div>
+                    <div class="postBody">
+                        <div class="imageContainer">
+                            <img src="/uploads/{{ post.image }}" alt="image-description">
+                        </div>
+                        <div class="postText">
+                            <p>{{ post.text }}</p>
+                        </div>
+                    </div>
+                    <div class="postFooter">
+                        <a href="/posts/{{ post.id }}">
+                            <button>Read More ...</button>
                         </a>
-                    </span>
-                </div>
-                <div class="postBody">
-                    <div class="imageContainer">
-                        <img src="/uploads/{{ post.image }}" alt="image-description">
-                    </div>
-                    <div class="postText">
-                        <p>{{ post.text }}</p>
                     </div>
                 </div>
-                <div class="postFooter">
-                    <a href="/posts/{{ post.id }}">
-                        <button>Read More ...</button>
-                    </a>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        {% endif %}
     </div>
 </body>
 

@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/imsofos/sofos#readme",
   "dependencies": {
-    "ioredis": "^4.28.0",
-    "path-to-regexp": "^6.2.0"
+    "ioredis": "^4.28.2",
+    "path-to-regexp": "^6.2.0",
+    "uuid": "^8.3.2"
   },
   "keywords": []
 }

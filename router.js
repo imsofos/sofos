@@ -42,6 +42,12 @@ function dispather(routeTableInput) {
                     request.body = JSON.parse(request.body)
                 } catch (err) { }
                 response.render = render(response);
+                response.json = output => {
+                    response.writeHead(200, 'OK', {
+                        'Content-Type': 'application/json'
+                    })
+                    return response.end(JSON.stringify(output))
+                }
                 return controller(request, response).catch(error => {
                     console.error(error);
                     response.writeHead(500)
